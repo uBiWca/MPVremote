@@ -175,9 +175,12 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                                         last_pos = arr[1]
                                         textView6.text = convertSecsToFullTime(last_pos)
                                     }
-                                    if (!blockview) textView5.text = convertSecsToFullTime(arr[2])
+                                    if (!blockview) {
+                                        textView5.text = convertSecsToFullTime(arr[2])
                                     seekBar3.max = arr[1].toInt()
-                                    if (!blockview) seekBar3.progress = arr[2].toInt()
+                                        seekBar3.progress = arr[2].toInt()
+                                    }
+
                                 }
                             }
                         }
