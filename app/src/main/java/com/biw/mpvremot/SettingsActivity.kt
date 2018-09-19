@@ -15,7 +15,7 @@ class SettingsActivity : AppCompatActivity() {
         val pref = this.getSharedPreferences("default", android.content.Context.MODE_PRIVATE)
         editText.setText(pref.getString("IP", "127.0.0.1"))
         editText2.setText(pref.getInt("PORT", 755).toString())
-        editText3.setText(pref.getInt("INPUTPORT", 756).toString())
+
         button.setOnClickListener(View.OnClickListener {
 
 
@@ -23,7 +23,7 @@ class SettingsActivity : AppCompatActivity() {
             try {
                 ed.putString("IP", editText.text.toString())
                 ed.putInt("PORT", editText2.text.toString().toInt())
-                ed.putInt("INPUTPORT", editText3.text.toString().toInt())
+
 
             } catch (e: NumberFormatException) {
                 Toast.makeText(this, "Wrong input!", Toast.LENGTH_LONG).show()

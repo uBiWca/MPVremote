@@ -1,6 +1,6 @@
 -- Purpose is to listen on a defined port for commands to pass to mpv
 
-local  port = 7550;
+local  port = 755;
 
 local  socket = require("socket")
 local  conn = socket.udp();
@@ -13,7 +13,7 @@ function send_name()
 local title =mp.get_property("media-title");
 local length = math.floor(mp.get_property("length"));
 local pos=math.floor(mp.get_property("time-pos"));
-conn_up:sendto(title.."$"..length.."$"..pos, "192.168.100.168", 5050);
+conn_up:sendto(title.."$"..length.."$"..pos, "192.168.100.168", 756);
 end
 mp.register_event("file-loaded", send_name);
 

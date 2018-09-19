@@ -24,7 +24,7 @@ import kotlin.text.Charsets.UTF_8
 class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     private var ip: String = ""
     private var prt: Int = 0
-    private var rcv_prt: Int = 0
+
     var media_length: Int = 0
     var chnl = DatagramChannel.open()
     var blockview = false
@@ -113,8 +113,8 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         var pref = this.getSharedPreferences("default", android.content.Context.MODE_PRIVATE)
         ip = pref.getString("IP", "127.0.0.1")
         prt = pref.getInt("PORT", 755)
-        rcv_prt = pref.getInt("INPUTPORT", 5050)
-        Log.d("MPV", "settin port to " + rcv_prt.toString())
+
+
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
@@ -141,8 +141,8 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             // this thread receives incoming massages from MPV and updates views accordingly to received info
 
             try {
-                chnl.socket().bind(InetSocketAddress(5050))
-                Log.d("MPV", "reopening port " + chnl.socket().port.toString())
+                chnl.socket().bind(InetSocketAddress(756))
+
                 chnl.configureBlocking(false)
                 var timerStarted: Boolean = false
                 var timer = Timer()
