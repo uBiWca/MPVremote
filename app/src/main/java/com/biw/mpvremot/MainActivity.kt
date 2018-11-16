@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
 
     override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-        if (p2) textView5.text = convertSecsToFullTime(p1.toString())
+        if (p2) txtv_currentTime.text = convertSecsToFullTime(p1.toString())
     }
 
     override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -119,16 +119,16 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
         super.onSaveInstanceState(outState, outPersistentState)
-        outState?.putString("position", textView5.text.toString())
-        outState?.putString("length", textView6.text.toString())
-        outState?.putString("filename", textView4.text.toString())
+        outState?.putString("position", txtv_currentTime.text.toString())
+        outState?.putString("length", txtv_overallTime.text.toString())
+        outState?.putString("filename", txtv_nowplaying.text.toString())
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
-        textView5.text = savedInstanceState?.getString("position")
-        textView6.text = savedInstanceState?.getString("length")
-        textView4.text = savedInstanceState?.getString("filename")
+        txtv_currentTime.text = savedInstanceState?.getString("position")
+        txtv_overallTime.text = savedInstanceState?.getString("length")
+        txtv_nowplaying.text = savedInstanceState?.getString("filename")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         setContentView(R.layout.activity_main)
         title = "MPV remote"
         seekBar3.progress = 0
-        textView4.isSelected = true
+        txtv_nowplaying.isSelected = true
         thread {
             // this thread receives incoming massages from MPV and updates views accordingly to received info
 
@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                     var last_pos = ""
                     if (!timerStarted) {
                         timer = Timer()
-                        timer.schedule(myTimerTask(textView5, textView6, textView4, seekBar3), 2000, 1000)
+                        timer.schedule(myTimerTask(txtv_currentTime, txtv_overallTime, txtv_nowplaying, seekBar3), 2000, 1000)
                         //this timer will clear views, if no info received in last 2 seconds
                         timerStarted = true
                     }
@@ -170,13 +170,13 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                             if (arr.size >= 3) {
                                 media_length = arr[1].toInt()
                                 runOnUiThread {
-                                    if (textView4.text != arr[0]) textView4.text = arr[0]
+                                    if (txtv_nowplaying.text != arr[0]) txtv_nowplaying.text = arr[0]
                                     if (last_pos != arr[1]) {
                                         last_pos = arr[1]
-                                        textView6.text = convertSecsToFullTime(last_pos)
+                                        txtv_overallTime.text = convertSecsToFullTime(last_pos)
                                     }
                                     if (!blockview) {
-                                        textView5.text = convertSecsToFullTime(arr[2])
+                                        txtv_currentTime.text = convertSecsToFullTime(arr[2])
                                     seekBar3.max = arr[1].toInt()
                                         seekBar3.progress = arr[2].toInt()
                                     }
@@ -194,9 +194,9 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             }
         }
         seekBar3.setOnSeekBarChangeListener(this)
-        floatingActionButton.setOnClickListener { send_command("PLAY") }
-        floatingActionButton2.setOnClickListener { send_command("PAUSE") }
-        floatingActionButton3.setOnClickListener {
+        fab_play.setOnClickListener { send_command("PLAY") }
+        fab_pause.setOnClickListener { send_command("PAUSE") }
+        fab_stop.setOnClickListener {
             send_command("QUIT")
         }
     }

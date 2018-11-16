@@ -13,16 +13,16 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
         title = "Settings"
         val pref = this.getSharedPreferences("default", android.content.Context.MODE_PRIVATE)
-        editText.setText(pref.getString("IP", "127.0.0.1"))
-        editText2.setText(pref.getInt("PORT", 755).toString())
+        edtxt_ip.setText(pref.getString("IP", "127.0.0.1"))
+        edtxt_port.setText(pref.getInt("PORT", 755).toString())
 
-        button.setOnClickListener(View.OnClickListener {
+        btn_save.setOnClickListener(View.OnClickListener {
 
 
             val ed = pref.edit()
             try {
-                ed.putString("IP", editText.text.toString())
-                ed.putInt("PORT", editText2.text.toString().toInt())
+                ed.putString("IP", edtxt_ip.text.toString())
+                ed.putInt("PORT", edtxt_port.text.toString().toInt())
 
 
             } catch (e: NumberFormatException) {

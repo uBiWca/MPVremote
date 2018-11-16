@@ -7,10 +7,11 @@
     tools:context="com.biw.mpvremot.MainActivity">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fab_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
@@ -23,23 +24,24 @@
         app:srcCompat="@android:drawable/ic_media_play" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/fab_pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginLeft="224dp"
         android:layout_marginStart="224dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
         android:scaleX="2"
         android:scaleY="2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/floatingActionButton"
+        app:layout_constraintStart_toEndOf="@+id/fab_play"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.807"
         app:srcCompat="@android:drawable/ic_media_pause" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
+        android:id="@+id/fab_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
@@ -50,7 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.796"
-        app:layout_constraintStart_toEndOf="@+id/floatingActionButton2"
+        app:layout_constraintStart_toEndOf="@+id/fab_pause"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.923"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
@@ -61,22 +63,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
         android:text="Now playing:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/txtv_currentTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="00:00:00"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtv_nowplaying"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -93,7 +97,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/txtv_overallTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -103,16 +107,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toEndOf="@+id/seekBar3"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/txtv_nowplaying" />
 
     <SeekBar
         android:id="@+id/seekBar3"
         android:layout_width="421dp"
         android:layout_height="19dp"
         android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="16dp"
         android:background="@android:color/background_light"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintStart_toEndOf="@+id/txtv_currentTime"
+        app:layout_constraintTop_toBottomOf="@+id/txtv_nowplaying" />
 
 </android.support.constraint.ConstraintLayout>
