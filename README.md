@@ -1,4 +1,7 @@
 # MPVremote
+Because usable images of LibreElec for OPi with native HW decoding was presented by jernej, and they works fine for me, this app is obsolete now and will no longer be supported and developed.
+Поскольку появились рабочие образы LibreElec с нативной поддержко HW-декодирования, я более не использую данное приложение, и, соответственно, не буду его поддерживать.
+
 This android application is intended to be used as client application for  LUA script mpv-remote, which
 allows to control MPV media player bundled with KOID in RetroorangePi.
 
